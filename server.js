@@ -8,7 +8,8 @@ const
 	mongoose = require('mongoose'),
 	MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/react-express-jwt',
 	PORT = process.env.PORT || 3001,
-	usersRoutes = require('./routes/users.js')
+  usersRoutes = require('./routes/users.js'), 
+  postsRoutes = require('./routes/posts')
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, (err) => {
 	console.log(err || `Connected to MongoDB.`)
@@ -24,6 +25,7 @@ app.get('/api', (req, res) => {
 })
 
 app.use('/api/users', usersRoutes)
+app.use('/api/posts', postsRoutes)
 
 // // tell express app when someone goes to url that doesnt begin with /api serve what's in the public folder
 // app.get('*', (req, res) => {

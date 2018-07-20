@@ -14,6 +14,8 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, (err) => {
 	console.log(err || `Connected to MongoDB.`)
 })
 
+// tell app to use this public folder step 1
+app.use(express.static(`${__dirname}/client/build`))
 app.use(logger('dev'))
 app.use(bodyParser.json())
 
@@ -23,6 +25,10 @@ app.get('/api', (req, res) => {
 
 app.use('/api/users', usersRoutes)
 
+// // tell express app when someone goes to url that doesnt begin with /api serve what's in the public folder
+// app.get('*', (req, res) => {
+// 	res.sendFile(`${__dirname}/client/build/index.html`)
+// })
 
 app.listen(PORT, (err) => {
 	console.log(err || `Server running on port ${PORT}.`)

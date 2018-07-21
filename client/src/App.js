@@ -1,20 +1,50 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import httpClient from './httpClient';
+import NavBar from './NavBar';
+import Home from './views/Home';
+import SignUp from './views/SignUp';
+import LogIn from './views/LogIn';
+import VIP from './views/VIP';
+import LogOut from './views/LogOut'
 
 class App extends Component {
+  
+  state = {
+    currentUser: httpClient.getCurrentUser()
+  }
+
+  onAuthSuccess() {
+    this.setState({ currentUser: httpClient.getCurrentUser() })
+  }
+
+  onLogOutSuccess() {
+    this.setState({ currentUser: null })
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="App container">
+        <NavBar currentUser={this.state.currentUser} />
+        <Switch>
+          <Route path="/signup" render={(routeProps) => {
+            return <SignUp {...routeProps} onSignUpSuccess={this.onAuthSuccess.bind(this)} />
+          }} />
+          <Route path="/login" render={(routeProps) => {
+            return <LogIn {...routeProps} onLogInSuccess={this.onAuthSuccess.bind(this)} />
+          }} />
+          <Route path="/vip" render={() => {
+            return this.state.currentUser
+            ? <VIP />
+            : <Redirect to="/login" />
+          }} />
+          <Route path="/logout" render={(routeProps) => {
+            return <LogOut {...routeProps} onLogOutSuccess={this.onLogOutSuccess.bind(this)} />
+          }} />
+          <Route exact path="/" component={Home} />
+        </Switch>
       </div>
-    );
+    )
   }
 }
 

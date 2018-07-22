@@ -8,6 +8,7 @@ const NavBar = (props) => {
       {props.currentUser
         ? (
           <Fragment>
+            <Link to="/submit">Submit</Link>
             <Link to="/vip">VIP</Link>
             <Link to="/logout">Log Out</Link>
           </Fragment>

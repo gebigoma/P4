@@ -25,7 +25,7 @@ app.get('/api', (req, res) => {
 })
 
 app.use('/api/users', usersRoutes)
-app.use('/api/posts', postsRoutes)
+app.use('/api/submissions', postsRoutes)
 
 // // tell express app when someone goes to url that doesnt begin with /api serve what's in the public folder
 // app.get('*', (req, res) => {

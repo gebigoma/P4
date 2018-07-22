@@ -7,6 +7,7 @@ import SignUp from './views/SignUp';
 import LogIn from './views/LogIn';
 import VIP from './views/VIP';
 import LogOut from './views/LogOut'
+import Submit from './views/Submit'
 
 class App extends Component {
   
@@ -36,6 +37,11 @@ class App extends Component {
           <Route path="/vip" render={() => {
             return this.state.currentUser
             ? <VIP />
+            : <Redirect to="/login" />
+          }} />
+          <Route path="/submit" render={() => {
+            return this.state.currentUser
+            ? <Submit />
             : <Redirect to="/login" />
           }} />
           <Route path="/logout" render={(routeProps) => {

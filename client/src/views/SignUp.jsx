@@ -4,7 +4,7 @@ import httpClient from '../httpClient'
 class SignUp extends Component {
 
   state = {
-    fields: { name: '', email: '', password: '' }
+    fields: { name: '', website: '', email: '', password: '' }
   }
 
   onInPutChange(evt) {
@@ -20,7 +20,7 @@ class SignUp extends Component {
     evt.preventDefault()
     console.log("Signing up..")
     httpClient.signUp(this.state.fields).then((user) => {
-      this.setState({ fields: {  name: '', email: '', password: ''} })
+      this.setState({ fields: { name: '', website: '', email: '', password: '' } })
       if(user) {
         this.props.onSignUpSuccess()
         // programtically redirects 
@@ -39,6 +39,7 @@ class SignUp extends Component {
               onChange={this.onInPutChange.bind(this)}
               onSubmit={this.onFormSubmit.bind(this)}>
               <input type="text" placeholder="Name" name="name" autoComplete="off" />
+              <input type="text" placeholder="Website" name="website" autoComplete="off" />
               <input type="text" placeholder="Email" name="email" autoComplete="off" />
               <input type="password" placeholder="Password" name="password" autoComplete="off" />
               <button>Sign Up</button>

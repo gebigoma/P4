@@ -12,7 +12,7 @@ class Home extends Component {
   componentDidMount() {
     apiClient({ method: 'get', url: '/api/submissions' })
       .then((apiResponse) => {
-        // console.log(apiResponse.data)
+        console.log(apiResponse.data)
         const submission = apiResponse.data.payload
         this.setState({ submissions: submission })
       })
@@ -34,7 +34,7 @@ class Home extends Component {
                 Title:
                   <Link to={`/submissions/${s._id}`}> {s.title}</Link> |
                 Description: {s.body} |
-                Image: <a href={this.formatLink(s.body)} target="_blank"><img src={s.img} /></a>  |
+                Image: <a href={this.formatLink(s.post_url)} target="_blank"><img src={s.img} /></a>  |
                 Tags: {s.tags.join(', ')} |
                 By: {s._by.name}
               </li>

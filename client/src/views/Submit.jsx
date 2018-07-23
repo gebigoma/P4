@@ -9,6 +9,7 @@ class Submit extends Component {
   state = {
     title: "",
     body: "",
+    post_url: "",
     img: "",
     tags: [" "]
   }
@@ -20,11 +21,11 @@ class Submit extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    let { title, body, img, tags } = this.state
+    let { title, body, post_url, img, tags } = this.state
     apiClient({
       method: 'post',
       url: '/api/submissions',
-      data: { title, body, img, tags }
+      data: { title, body, post_url, img, tags }
     })
     // console.log(this.state)
       .then(response => {
@@ -36,7 +37,7 @@ class Submit extends Component {
       })
   }
   render() {
-    let { title, body, img, tags } = this.state
+    let { title, body, post_url, img, tags } = this.state
     return (
       <div>
         <h1>Submit</h1>
@@ -45,6 +46,7 @@ class Submit extends Component {
           handleSubmit={this.handleSubmit}
           title={title}
           body={body}
+          post_url={post_url}
           img={img}
           tags={tags}
         />

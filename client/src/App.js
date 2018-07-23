@@ -41,9 +41,9 @@ class App extends Component {
               ? <VIP />
               : <Redirect to="/login" />
           }} />
-          <Route path="/submit" render={() => {
+          <Route path="/submit" render={(routeProps) => {
             return this.state.currentUser
-              ? <Submit />
+              ? <Submit {...routeProps} onLogInSuccess={this.onAuthSuccess.bind(this)} />
               : <Redirect to="/login" />
           }} />
           <Route path="/profile" render={(routeProps) => {

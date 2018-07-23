@@ -28,7 +28,7 @@ class ShowSubmission extends Component {
         <p>{submission.body}</p>
         <p>{submission.img}</p>
         <p>{submission.tags}</p>
-        <p>{submission._by}</p>
+        <p>{submission._by.name}</p>
       </div>
 
     )

@@ -18,8 +18,14 @@ class Home extends Component {
       })
   }
 
+  formatLink(url) {
+    if(url.includes('http')) return url
+    return `http://${url}`
+  }
+
   render() {
     return(
+      
       <div>
         <ul>
           {this.state.submissions.map((s) => {
@@ -28,9 +34,9 @@ class Home extends Component {
                 Title:
                   <Link to={`/submissions/${s._id}`}> {s.title}</Link> |
                 Description: {s.body} |
-                Image: {s.img} |
-                Tags: {s.tags} |
-                By: {s._by}
+                Image: <a href={this.formatLink(s.body)} target="_blank"><img src={s.img} /></a>  |
+                Tags: {s.tags.join(', ')} |
+                By: {s._by.name}
               </li>
             )
           })}

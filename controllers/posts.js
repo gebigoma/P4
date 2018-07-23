@@ -1,7 +1,7 @@
 const Post = require('../models/Post')
 
 exports.index = (req, res) => {
-  Post.find({}, (err, posts) => {
+  Post.find({}).populate('_by').exec((err, posts) => {
     if (err) {
       res.json({ status: "FAIL", err })
     } else {
@@ -11,7 +11,7 @@ exports.index = (req, res) => {
 }
 
 exports.show = (req, res) => {
-  Post.findById(req.params.id, (err, postFromDB) => {
+  Post.findById(req.params.id).populate('_by').exec((err, postFromDB) => {
     if (err) {
       res.json({ status: "FAIL", err })
     } else {

@@ -24,6 +24,7 @@ class Profile extends Component {
     return(
       <div>
       {/* 1.get the current users's name to display on profile page */}
+      <h1>{JSON.stringify(this.state.currentUser)}</h1>
       </div>
     )
   }

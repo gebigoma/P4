@@ -12,7 +12,7 @@ class Home extends Component {
   componentDidMount() {
     apiClient({ method: 'get', url: '/api/submissions' })
       .then((apiResponse) => {
-        console.log(apiResponse.data)
+        // console.log(apiResponse.data)
         const submission = apiResponse.data.payload
         this.setState({ submissions: submission })
       })
@@ -25,10 +25,12 @@ class Home extends Component {
           {this.state.submissions.map((s) => {
             return (
               <li key={s._id}>
-                {s.title} 
-                {s.body} 
-                {s.img} 
-                {s.tags}
+                Title:
+                  <Link to={`/submissions/${s._id}`}> {s.title}</Link> |
+                Description: {s.body} |
+                Image: {s.img} |
+                Tags: {s.tags} |
+                By: {s._by}
               </li>
             )
           })}

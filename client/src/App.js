@@ -8,9 +8,11 @@ import LogIn from './views/LogIn';
 import VIP from './views/VIP';
 import LogOut from './views/LogOut'
 import Submit from './views/Submit'
+import Profile from './views/Profile'
+import ShowSubmission from './views/Show';
 
 class App extends Component {
-  
+
   state = {
     currentUser: httpClient.getCurrentUser()
   }
@@ -36,17 +38,23 @@ class App extends Component {
           }} />
           <Route path="/vip" render={() => {
             return this.state.currentUser
-            ? <VIP />
-            : <Redirect to="/login" />
+              ? <VIP />
+              : <Redirect to="/login" />
           }} />
           <Route path="/submit" render={() => {
             return this.state.currentUser
-            ? <Submit />
-            : <Redirect to="/login" />
+              ? <Submit />
+              : <Redirect to="/login" />
+          }} />
+          <Route path="/profile" render={(routeProps) => {
+            return this.state.currentUser
+              ? <Profile {...routeProps} onLogInSuccess={this.onAuthSuccess.bind(this)} />
+              : <Redirect to="/login" />
           }} />
           <Route path="/logout" render={(routeProps) => {
             return <LogOut {...routeProps} onLogOutSuccess={this.onLogOutSuccess.bind(this)} />
           }} />
+          <Route path="/submissions/:id" component={ShowSubmission} />
           <Route exact path="/" component={Home} />
         </Switch>
       </div>

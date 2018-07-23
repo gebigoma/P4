@@ -10,7 +10,7 @@ class Submit extends Component {
     title: "",
     body: "",
     img: "",
-    tags: [""]
+    tags: [" "]
   }
 
   handleChange = (event) => {

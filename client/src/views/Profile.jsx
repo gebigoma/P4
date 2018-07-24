@@ -3,20 +3,17 @@ import httpClient from '../httpClient'
 import { Link } from 'react'
 import axios from 'axios'
 import ProfileForm from '../components/ProfileForm';
+
 const apiClient = axios.create()
 
 
 class Profile extends Component {
 
-  // set state to current user from httpClient
-  // state for form data?
-  // state for user data?
-
   state = {
     // referring to app.js for current user ifo
     fields: { ...this.props.currentUser },
     // hold submissions
-    submissionsFromCurrentUser: [],
+    submissions: [],
     // toggle form for updating profile
     formEnabled: false
   }
@@ -40,7 +37,7 @@ class Profile extends Component {
         // console.log(apiResponse.data.payload)
         // submissions payload is in user payload
         let { submissions } = apiResponse.data.payload;
-        this.setState({ submissionsFromCurrentUser: submissions })
+        this.setState({ submissions: submissions })
       })
   }
 
@@ -106,7 +103,7 @@ class Profile extends Component {
       <div className="ui link cards">
         <div className="card">
         <ul>
-          {this.state.submissionsFromCurrentUser.map((s) => {
+          {this.state.submissions.map((s) => {
             return (
               <li key={s._id}>
                 <div className="image">

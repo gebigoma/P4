@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const apiClient = axios.create()
 
-class Home extends Component {
+class Collection extends Component {
   state = {
     submissions: []
   }
@@ -59,4 +59,4 @@ class Home extends Component {
 
 }
 
-export default Home
+export default Collection

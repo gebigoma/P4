@@ -10,6 +10,7 @@ import LogOut from './views/LogOut'
 import Submit from './views/Submit'
 import Profile from './views/Profile'
 import ShowSubmission from './views/Show';
+import Collection from './views/Collection';
 
 class App extends Component {
 
@@ -36,6 +37,7 @@ class App extends Component {
           <Route path="/login" render={(routeProps) => {
             return <LogIn {...routeProps} onLogInSuccess={this.onAuthSuccess.bind(this)} />
           }} />
+          <Route path="/collection" component={Collection} />
           <Route path="/vip" render={() => {
             return this.state.currentUser
               ? <VIP />

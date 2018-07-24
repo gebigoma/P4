@@ -15,6 +15,7 @@ class App extends Component {
 
   state = {
     currentUser: httpClient.getCurrentUser()
+    // currentUser: null
   }
 
   onAuthSuccess() {

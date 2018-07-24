@@ -45,7 +45,7 @@ class Home extends Component {
               </div>
                   <div className="extra content">
                     Tags: {s.tags.join(' , ')}
-                    {/* <span className="right floated">By: {s._by.name}</span> */}
+                    <span className="right floated">By: {s._by.name}</span>
                   </div>
               </li>
             )

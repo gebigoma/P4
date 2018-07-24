@@ -13,8 +13,11 @@ class Profile extends Component {
   // state for user data?
 
   state = {
+    // referring to app.js for current user ifo
     fields: { ...this.props.currentUser },
+    // hold submissions
     submissionsFromCurrentUser: [],
+    // toggle form for updating profile
     formEnabled: false
   }
 
@@ -24,20 +27,18 @@ class Profile extends Component {
   how are the submissions defined?
   submissions from currentUser
   get all submissions on page
-  
   */
 
-
   componentDidMount() {
+    // add user submitted posts using user show route
     const { _id } = this.props.currentUser;
     apiClient({
       method: 'get',
       url: `/api/users/${_id}`
-      // see user routes added post find to show route
     })
       .then((apiResponse) => {
-        console.log(apiResponse.data.payload)
-        // submissions payload in user payload
+        // console.log(apiResponse.data.payload)
+        // submissions payload is in user payload
         let { submissions } = apiResponse.data.payload;
         this.setState({ submissionsFromCurrentUser: submissions })
       })
@@ -57,10 +58,11 @@ class Profile extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.fields)
-    // let { name, email, website } = this.state.currentUser;
+    // sending update request to httpClient with fields set from state
+    // console.log(this.state.fields)
     httpClient.updateProfile(this.state.fields)
       .then(user => {
+    // set state in App /profile route to handle updating token to update user
         this.props.onUpdateProfileSuccess()
       })
   }
@@ -73,6 +75,7 @@ class Profile extends Component {
     e.preventDefault()
     httpClient.deleteProfile()
       .then(response => {
+  // set state in App /profile to handle deleting token
         this.props.onDeleteProfileSuccess()
         this.props.history.push('/')
       })
@@ -80,12 +83,12 @@ class Profile extends Component {
 
   render() {
     // console.log(this.state.currentUser)
+    // fields set from state
+    // current user set from App.js
     let { fields, formEnabled } = this.state;
     let { currentUser } = this.props
     return (
       <div>
-        {/* 1.get the current users's name to display on profile page */}
-        {/* <h1>{JSON.stringify(this.state.currentUser)}</h1> */}
         <h1>{currentUser.name}</h1>
         <h1>{currentUser.email}</h1>
         <h1>{currentUser.website}</h1>
@@ -119,7 +122,7 @@ class Profile extends Component {
               </div>
                   <div className="extra content">
                     Tags: {s.tags.join(' , ')}
-                    {/* <span className="right floated">By: {s._by.name}</span> */}
+                    <span className="right floated">By: {s._by.name}</span>
                   </div>
               </li>
             )

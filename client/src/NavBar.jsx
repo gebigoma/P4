@@ -3,24 +3,26 @@ import { Link } from 'react-router-dom'
 
 const NavBar = (props) => {
   return (
-    <div className="NavBar">
-      <Link to="/">Home</Link>
+    <div className="NavBar ui three item menu">
+      <div className="container">
+      <Link className="item" to="/">Home</Link>
       {props.currentUser
         ? (
           <Fragment>
-            <Link to="/submit">Submit</Link>
-            <Link to="/profile">Profile</Link>
-            <Link to="/vip">VIP</Link>
-            <Link to="/logout">Log Out</Link>
+            <Link className="item" to="/submit">Submit</Link>
+            <Link className="item" to="/profile">Profile</Link>
+            <Link className="item" to="/vip">VIP</Link>
+            <Link className="item" to="/logout">Log Out</Link>
           </Fragment>
         )
         : (
           <Fragment>
-          <Link to="/login">Log In</Link>
-          <Link to="/signup">Sign Up</Link>
+          <Link className="item" to="/login">Log In</Link>
+          <Link className="item" to="/signup">Sign Up</Link>
         </Fragment>
         )
       }
+      </div>
     </div>
   )
 }

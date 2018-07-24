@@ -26,21 +26,32 @@ class Home extends Component {
   render() {
     return(
       
-      <div>
+      <div className="ui link cards">
+        <div className="card">
         <ul>
           {this.state.submissions.map((s) => {
             return (
               <li key={s._id}>
-                Title:
-                  <Link to={`/submissions/${s._id}`}> {s.title}</Link> |
-                Description: {s.body} |
-                Image: <a href={this.formatLink(s.post_url)} target="_blank"><img src={s.img} /></a>  |
-                Tags: {s.tags.join(', ')} |
-                By: {s._by.name}
+                <div className="image">
+                  <img src={s.img} /* <a href={this.formatLink(s.post_url)} target="_blank"> </a> */ />
+                </div>
+                <div className="content">
+                  <div className="header">
+                    <Link to={`/submissions/${s._id}`}> {s.title}</Link>
+                  </div>
+                  <div className="description">
+                    {s.body}
+                  </div>
+                  <div className="extra content">
+                    Tags: {s.tags.join(' , ')} |
+                    By: {s._by.name}
+                  </div>
+              </div>
               </li>
             )
           })}
         </ul>
+        </div>
       </div>
     )
   }

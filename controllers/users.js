@@ -39,7 +39,7 @@ module.exports = {
 			req.user.save((err, updatedUser) => {
 				if(err) return res.json({message: "ERROR", payload: null, code: err.code})
 				const token = signToken(updatedUser)
-				res.json({ message: "SUCCESS", payload: token })
+				res.json({ message: "SUCCESS", payload: { updatedUser, token } })
 			})
 	},
 

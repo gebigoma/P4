@@ -48,21 +48,20 @@ class Profile extends Component {
   
   handleSubmit = (e) => {
     e.preventDefault();
-    let { name, email, website } = this.state
+    let { name, email, website } = this.state.currentUser;
     //  do something with the token?
     let { _id } = this.state.currentUser;
-    console.log(this.state.currentUser)
     apiClient({
       method: 'patch', 
-      url: `/api/users/${_id}`, 
+      url: `/api/users/me`, 
       data: { name, email, website }
     })
       .then(response => {
-        this.setState({ name: "", email: "", website: "" })
-        this.setState({  formEnabled: true})
-
+        let { name, email, website } = response.data.payload.updatedUser;
+        let currentUser = Object.assign({}, this.state.currentUser, { name, email, website });
+        httpClient.setToken(response.data.payload.token);
+        this.setState({ currentUser, formEnabled: false });
       })
-    // this.setState({  formEnabled: false})
   }
 
   toggleForm = () => {

@@ -26,9 +26,12 @@ class Profile extends Component {
   /* 
   get current user's submissions only 
   current user is httpClient.getCurrentUser()
+  how are the submissions defined?
   submissions from currentUser
   get all submissions on page
+  
   */
+
   
   componentDidMount() {
     console.log(httpClient.getCurrentUser())
@@ -37,14 +40,9 @@ class Profile extends Component {
       method: 'get', 
       url: `/api/users/${_id}`
     })
-    apiClient({
-      method: 'get',
-      url: `/api/submissions/${_id}`
-    })
       .then((apiResponse) => {
         let { user, submissions } = apiResponse.data.payload;
         this.setState({ user, submissions })
-        this.setState
       })
   }
 

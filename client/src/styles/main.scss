@@ -1,0 +1,15 @@
+$size : 200px;
+
+body{
+  padding:40px;
+}
+
+.card{
+  width:$size !important;
+}
+
+.card .image{
+  background: black !important;
+  width: $size; 
+  height: $size;
+}

@@ -42,11 +42,11 @@ class Home extends Component {
                   <div className="description">
                     {s.body}
                   </div>
-                  <div className="extra content">
-                    Tags: {s.tags.join(' , ')} |
-                    By: {s._by.name}
-                  </div>
               </div>
+                  <div className="extra content">
+                    Tags: {s.tags.join(' , ')}
+                    {/* <span className="right floated">By: {s._by.name}</span> */}
+                  </div>
               </li>
             )
           })}

@@ -15,7 +15,6 @@ class App extends Component {
 
   state = {
     currentUser: httpClient.getCurrentUser()
-    // currentUser: null
   }
 
   onAuthSuccess() {
@@ -49,7 +48,13 @@ class App extends Component {
           }} />
           <Route path="/profile" render={(routeProps) => {
             return this.state.currentUser
-              ? <Profile {...routeProps} onLogInSuccess={this.onAuthSuccess.bind(this)} />
+              ? (
+                <Profile {...routeProps}
+                  currentUser={this.state.currentUser}
+                  onUpdateProfileSuccess={this.onAuthSuccess.bind(this)}
+                  onDeleteProfileSuccess={this.onLogOutSuccess.bind(this)}
+                />
+              )
               : <Redirect to="/login" />
           }} />
           <Route path="/logout" render={(routeProps) => {

@@ -21,7 +21,7 @@ function verifyToken(req, res, next) {
     // otherwise, search for user by the id that was embedded in token:
     User.findById(decodedData._id, (err, user) => {
       // if no user, deny access:
-      if(!user) return exports.json({ message: "ERROR", error: "Invalid token." })
+      if(!user) return res.json({ message: "ERROR", error: "Invalid token." })
       // add the user to the requist object (the current user):
       req.user = user
       //  go on to process the route:

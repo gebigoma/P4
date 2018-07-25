@@ -28,7 +28,7 @@ class ShowSubmission extends Component {
       <div>
         <p>{submission.title}</p>
         <p>{submission.body}</p>
-        <p>{submission.img}</p>
+        <p><img src={submission.featuredImageUrl} /></p>
         <p>{submission.tags.join(', ')}</p>
         <p>{submission._by.name}</p>
       </div>

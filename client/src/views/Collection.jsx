@@ -9,12 +9,24 @@ class Collection extends Component {
     submissions: []
   }
 
+/* 
+grab info from name and set params in url
+set a show route in users users/:id/submissions
+*/
+
   componentDidMount() {
-    apiClient({ method: 'get', url: '/api/submissions' })
+  // click on user name see how to click from submission name 
+    const id = this.props.match.params.id
+    console.log(this.props.match.params)
+    console.log(`${id}`)
+     apiClient({ 
+       method: 'get', 
+       url: `/api/users/${id}/submissions` 
+      })
       .then((apiResponse) => {
         console.log(apiResponse.data)
-        const submission = apiResponse.data.payload
-        this.setState({ submissions: submission })
+        let { submissions } = apiResponse.data.payload
+        this.setState({ submissions: submissions })
       })
   }
 
@@ -45,7 +57,7 @@ class Collection extends Component {
               </div>
                   <div className="extra content">
                     Tags: {s.tags.join(' , ')}
-                    <span className="right floated">By:  <Link to="/collection">{s._by.name}</Link></span>
+                    <span className="right floated">By: {s._by.name}</span>
                   </div>
               </li>
             )

@@ -12,7 +12,7 @@ class Home extends Component {
   componentDidMount() {
     apiClient({ method: 'get', url: '/api/submissions' })
       .then((apiResponse) => {
-        console.log(apiResponse.data)
+        // console.log(apiResponse.data)
         const submission = apiResponse.data.payload
         this.setState({ submissions: submission })
       })
@@ -45,7 +45,7 @@ class Home extends Component {
               </div>
                   <div className="extra content">
                     Tags: {s.tags.join(' , ')}
-                    <span className="right floated">By:  <Link to="/collection">{s._by.name}</Link></span>
+                    <span className="right floated">By:  <Link to={`/collection/${s._by._id}`}>{s._by.name}</Link></span>
                   </div>
               </li>
             )

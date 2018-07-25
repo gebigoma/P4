@@ -30,7 +30,7 @@ class Submit extends Component {
     // console.log(this.state)
       .then(response => {
         // console.log(response)
-        let id = response.data.payload._id
+        // let id = response.data.payload._id
         // console.log(id)
         // this.setState({ title: "", body: "", image: "", tags: "" })
         this.props.history.push('/')

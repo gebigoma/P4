@@ -24,6 +24,17 @@ module.exports = {
 		})
 	},
 
+	// add a user route /users/:id/submissions with another controller in users
+	showSubmissions: (req, res) => {
+		User.findById(req.params.id, (err, user) => {
+			if (err) return res.json({ message: "ERROR", payload: null, code: err.code })
+			Post.find({ _by: user._id }, (err, submissions) => {
+				if (err) return res.json({ message: "ERROR", payload: null, code: err.code })
+				res.json({ message: "SUCCESS", payload: { submissions } })
+			})
+		})
+	},
+
 	// create a new user
 	create: (req, res) => {
 		User.create(req.body, (err, user) => {

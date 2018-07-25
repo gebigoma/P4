@@ -10,7 +10,9 @@ class ShowSubmission extends Component {
   }
   
   componentDidMount() {
-    apiClient({ method: 'get', url: `/api/submissions/` })
+    const id = this.props.match.params.id
+    console.log(id)
+    apiClient({ method: 'get', url: `/api/submissions/${id}` })
       .then((apiResponse) => {
         this.setState({ submission: apiResponse.data.payload })
 
@@ -24,11 +26,11 @@ class ShowSubmission extends Component {
     console.log(submission)
     return ( 
       <div>
-        <p>{submission[0].title}</p>
-        <p>{submission[0].body}</p>
-        <p>{submission[0].img}</p>
-        <p>{submission[0].tags.join(', ')}</p>
-        <p>{submission[0]._by.name}</p>
+        <p>{submission.title}</p>
+        <p>{submission.body}</p>
+        <p>{submission.img}</p>
+        <p>{submission.tags.join(', ')}</p>
+        <p>{submission._by.name}</p>
       </div>
 
     )

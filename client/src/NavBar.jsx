@@ -9,14 +9,15 @@ const NavBar = (props) => {
       {props.currentUser
         ? (
           <Fragment>
-            <Link className="item" to="/submit">Submit</Link>
             <Link className="item" to="/profile">{props.currentUser.name}</Link>
+            <Link className="item" to="/submit">Submit</Link>
             <Link className="item" to="/vip">VIP</Link>
             <Link className="item" to="/logout">Log Out</Link>
           </Fragment>
         )
         : (
           <Fragment>
+          <Link className="item" to="/submit">Submit</Link>
           <Link className="item" to="/login">Log In</Link>
           <Link className="item" to="/signup">Sign Up</Link>
         </Fragment>

@@ -5,6 +5,7 @@ const
 	{ verifyToken } = require('../serverAuth.js')
 
 usersRouter.get('/', usersCtrl.index)
+usersRouter.get('/:id/submissions', usersCtrl.showSubmissions)
 usersRouter.post('/', usersCtrl.create)
 usersRouter.post('/authenticate', usersCtrl.authenticate)
 

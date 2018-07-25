@@ -32,36 +32,52 @@ class App extends Component {
         <NavBar currentUser={this.state.currentUser} />
         <Switch>
           <Route path="/signup" render={(routeProps) => {
-            return <SignUp {...routeProps} onSignUpSuccess={this.onAuthSuccess.bind(this)} />
+            return (
+              <SignUp {...routeProps} 
+                onSignUpSuccess={this.onAuthSuccess.bind(this)} 
+                />
+            )
           }} />
           <Route path="/login" render={(routeProps) => {
-            return <LogIn {...routeProps} onLogInSuccess={this.onAuthSuccess.bind(this)} />
+            return (
+              <LogIn {...routeProps} 
+                onLogInSuccess={this.onAuthSuccess.bind(this)} 
+                />
+            )
           }} />
-          <Route path="/collection" component={Collection} />
           <Route path="/vip" render={() => {
             return this.state.currentUser
-              ? <VIP />
-              : <Redirect to="/login" />
+            ? <VIP />
+            : <Redirect to="/login" />
           }} />
           <Route path="/submit" render={(routeProps) => {
             return this.state.currentUser
-              ? <Submit {...routeProps} onLogInSuccess={this.onAuthSuccess.bind(this)} />
-              : <Redirect to="/login" />
+            ? ( 
+              <Submit {...routeProps} 
+              onLogInSuccess={this.onAuthSuccess.bind(this)} 
+              />
+            )
+            : <Redirect to="/login" />
           }} />
           <Route path="/profile" render={(routeProps) => {
             return this.state.currentUser
-              ? (
-                <Profile {...routeProps}
-                  currentUser={this.state.currentUser}
-                  onUpdateProfileSuccess={this.onAuthSuccess.bind(this)}
-                  onDeleteProfileSuccess={this.onLogOutSuccess.bind(this)}
-                />
-              )
-              : <Redirect to="/login" />
+            ? (
+              <Profile {...routeProps}
+              currentUser={this.state.currentUser}
+              onUpdateProfileSuccess={this.onAuthSuccess.bind(this)}
+              onDeleteProfileSuccess={this.onLogOutSuccess.bind(this)}
+              />
+            )
+            : <Redirect to="/login" />
           }} />
           <Route path="/logout" render={(routeProps) => {
-            return <LogOut {...routeProps} onLogOutSuccess={this.onLogOutSuccess.bind(this)} />
+            return ( 
+              <LogOut {...routeProps} 
+              onLogOutSuccess={this.onLogOutSuccess.bind(this)} 
+              />
+            ) 
           }} />
+          <Route path="/collection/:id" component={Collection} />
           <Route path="/submissions/:id" component={ShowSubmission} />
           <Route exact path="/" component={Home} />
         </Switch>

@@ -86,9 +86,9 @@ class Profile extends Component {
     let { currentUser } = this.props
     return (
       <div>
-        <h1>{currentUser.name}</h1>
-        <h1>{currentUser.email}</h1>
-        <h1>{currentUser.website}</h1>
+        <h1>{fields.name}</h1>
+        <h1>{fields.email}</h1>
+        <h1>{fields.website}</h1>
         <h1><a href={this.formatLink(currentUser.website)} target="_blank">{this.formatLink(currentUser.website)}</a></h1>
         <div>
           {formEnabled

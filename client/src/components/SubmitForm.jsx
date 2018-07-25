@@ -1,7 +1,7 @@
 import React from 'react'
 
 const SubmitForm = (props) => {
-  let { handleChange, handleSubmit, title, body, post_url, img, tags } = props
+  let { handleChange, handleFileSelect, handleSubmit, title, body, post_url, img, tags } = props
   return (
     <form onSubmit={handleSubmit}>
         <input 
@@ -16,6 +16,7 @@ const SubmitForm = (props) => {
         <input onChange={handleChange} type="text" placeholder="Post Url" name="post_url" autoComplete="off" value={post_url}/>
         <input onChange={handleChange} type="text" placeholder="Image" name="img" autoComplete="off" value={img} />
         <input onChange={handleChange} type="text" placeholder="Tags" name="tags" autoComplete="off" value={tags}/>
+        <input type="file" onChange={handleFileSelect} />
         <button>Submit</button>
       </form>
   )

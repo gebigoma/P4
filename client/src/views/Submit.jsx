@@ -11,7 +11,8 @@ class Submit extends Component {
     body: "",
     post_url: "",
     img: "",
-    tags: [" "]
+    tags: [" "],
+    selectedFile : null
   }
 
   handleChange = (event) => {
@@ -19,20 +20,43 @@ class Submit extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
+  handleFileSelect = event => {
+    console.log(event.target.files[0])
+    this.setState ({
+      selectedFile: event.target.files[0]
+    })
+  }
+
+  // fileUploadHandler = () => {
+  //   const fd = new FormData()
+  //   fd.append('image', this.state.selectedFile, this.state.selectedFile.name)
+  //   // stores file in cloud storage
+    // axios.post('my-domain.com/file-upload', fd, {
+    //   onUploadProgress: progressEvent => {
+    //     console.log('Upload Progress: ' + Math.round(progressEvent.loaded / progressEvent.total * 100) + '%')
+    //   }
+    // })
+  //     .then(res => {
+
+  //     })
+  // }
+
   handleSubmit = (event) => {
     event.preventDefault()
+    const fd = new FormData()
     let { title, body, post_url, img, tags } = this.state
-    apiClient({
-      method: 'post',
-      url: '/api/submissions',
-      data: { title, body, post_url, img, tags }
+    fd.append('title', title)
+    fd.append('body', body)
+    fd.append('post_url', post_url)
+    fd.append('img', img)
+    fd.append('tags', tags)
+    fd.append('image', this.state.selectedFile, this.state.selectedFile.name)
+    apiClient.post('/api/submissions', fd, {
+      onUploadProgress: progressEvent => {
+        console.log('Upload Progress: ' + Math.round(progressEvent.loaded / progressEvent.total * 100) + '%')
+      }
     })
-    // console.log(this.state)
       .then(response => {
-        // console.log(response)
-        // let id = response.data.payload._id
-        // console.log(id)
-        // this.setState({ title: "", body: "", image: "", tags: "" })
         this.props.history.push('/')
       })
   }
@@ -43,6 +67,7 @@ class Submit extends Component {
         <h1>Submit</h1>
         <SubmitForm
           handleChange={this.handleChange}
+          handleFileSelect={this.handleFileSelect}
           handleSubmit={this.handleSubmit}
           title={title}
           body={body}

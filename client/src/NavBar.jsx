@@ -17,6 +17,7 @@ const NavBar = (props) => {
         )
         : (
           <Fragment>
+          <Link className="item" to="/testing">Test</Link>
           <Link className="item" to="/submit">Submit</Link>
           <Link className="item" to="/login">Log In</Link>
           <Link className="item" to="/signup">Sign Up</Link>

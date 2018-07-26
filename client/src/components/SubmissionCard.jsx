@@ -7,7 +7,7 @@ class SubmissionCard extends Component {
     if (url.includes('http')) return url
     return `http://${url}`
   }
-  
+
   render () {
     const { submissions } = this.props;
 
@@ -19,7 +19,7 @@ class SubmissionCard extends Component {
             return (
               <li key={s._id}>
                 <div className="image">
-                <a href={this.formatLink(s.post_url)} target="_blank"> <img src={s.featuredImageUrl} /> </a>
+                <a href={this.formatLink(s.post_url)} target="_blank"> <img alt={s.title} src={s.featuredImageUrl} /> </a>
                 </div>
                 <div className="content">
                   <div className="header">

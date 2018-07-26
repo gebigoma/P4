@@ -3,6 +3,7 @@ import httpClient from '../httpClient'
 import axios from 'axios'
 import ProfileForm from '../components/ProfileForm';
 import SubmissionCard from '../components/SubmissionCard'
+import ProfileDetail from '../components/ProfileDetail'
 
 const apiClient = axios.create()
 
@@ -71,11 +72,11 @@ class Profile extends Component {
       })
   }
 
-  formatLink(url) {
+    formatLink(url) {
     if (url.includes('http')) return url
     return `http://${url}`
   }
-  
+
   render() {
     // console.log(this.state.currentUser)
     // fields set from state
@@ -84,10 +85,8 @@ class Profile extends Component {
     let { currentUser } = this.props
     return (
       <div>
-        <h1>{fields.name}</h1>
-        <h1>{fields.email}</h1>
-        <h1>{fields.website}</h1>
-        <h1><a href={this.formatLink(currentUser.website)} target="_blank">{this.formatLink(currentUser.website)}</a></h1>
+        <ProfileDetail fields={fields} currentUser={currentUser} />
+
         <div>
           {formEnabled
             ? <ProfileForm name={fields.name} email={fields.email} website={fields.website} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
@@ -96,9 +95,8 @@ class Profile extends Component {
         <div>
           <a href='#' onClick={this.deleteProfile}>Delete Profile</a>
         </div>
-      
-      <SubmissionCard submissions={submissions} />
 
+      <SubmissionCard submissions={submissions} />
       </div>
     )
   }

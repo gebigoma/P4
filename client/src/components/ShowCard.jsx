@@ -13,7 +13,7 @@ class ShowCard extends Component {
       <div>
         <p>{submission.title}</p>
         <p>{submission.body}</p>
-        <p> <a href={this.formatLink(submission.post_url)} target="_blank"> <img src={submission.featuredImageUrl} /> </a></p>
+        <p> <a href={this.formatLink(submission.post_url)} target="_blank"> <img alt={submission.title} src={submission.featuredImageUrl} /> </a></p>
         <p>{submission.tags.join(', ')}</p>
         <p>{submission._by.name}</p>
       </div>

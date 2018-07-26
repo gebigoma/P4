@@ -39,4 +39,3 @@ class TestUpload extends Component {
 }
 
 
-export default TestUpload

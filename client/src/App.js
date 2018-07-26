@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import httpClient from './httpClient';
-import NavBar from './NavBar';
+import NavBar from './components/NavBar';
 import Home from './views/Home';
 import SignUp from './views/SignUp';
 import LogIn from './views/LogIn';
@@ -11,7 +11,6 @@ import Submit from './views/Submit'
 import Profile from './views/Profile'
 import ShowSubmission from './views/Show';
 import Collection from './views/Collection';
-import TestUpload from './TestUpload'
 
 class App extends Component {
 

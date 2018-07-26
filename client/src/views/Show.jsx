@@ -16,9 +16,7 @@ class ShowSubmission extends Component {
     apiClient({ method: 'get', url: `/api/submissions/${id}` })
       .then((apiResponse) => {
         this.setState({ submission: apiResponse.data.payload })
-
       })
-  
   }
 
   render() {

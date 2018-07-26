@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import httpClient from '../httpClient'
-import { Link } from 'react'
 import axios from 'axios'
 import ProfileForm from '../components/ProfileForm';
+import SubmissionCard from '../components/SubmissionCard'
 
 const apiClient = axios.create()
 
-
 class Profile extends Component {
-
   state = {
     // referring to app.js for current user ifo
     fields: { ...this.props.currentUser },
@@ -39,11 +37,6 @@ class Profile extends Component {
         let { submissions } = apiResponse.data.payload;
         this.setState({ submissions: submissions })
       })
-  }
-
-  formatLink(url) {
-    if (url.includes('http')) return url
-    return `http://${url}`
   }
 
   handleChange = (e) => {
@@ -78,6 +71,11 @@ class Profile extends Component {
       })
   }
 
+  formatLink(url) {
+    if (url.includes('http')) return url
+    return `http://${url}`
+  }
+  
   render() {
     // console.log(this.state.currentUser)
     // fields set from state
@@ -99,35 +97,7 @@ class Profile extends Component {
           <a href='#' onClick={this.deleteProfile}>Delete Profile</a>
         </div>
       
-
-      <div className="ui link cards">
-        <div className="card">
-        <ul>
-          {this.state.submissions.map((s) => {
-            return (
-              <li key={s._id}>
-                <div className="image">
-                <img src={s.featuredImageUrl} /* <a href={this.formatLink(s.post_url)} target="_blank"> </a> */ />
-                </div>
-                <div className="content">
-                  <div className="header">
-                    {s.title}
-                  </div>
-                  <div className="description">
-                    {s.body}
-                  </div>
-              </div>
-                  <div className="extra content">
-                    Tags: {s.tags.join(' , ')}
-                    <span className="right floated">By: {s._by.name}</span>
-                  </div>
-              </li>
-            )
-          })}
-        </ul>
-        </div>
-      </div> 
-
+      <SubmissionCard submissions={submissions} />
 
       </div>
     )

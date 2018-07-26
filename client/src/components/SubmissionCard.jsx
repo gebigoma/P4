@@ -7,6 +7,7 @@ class SubmissionCard extends Component {
     if (url.includes('http')) return url
     return `http://${url}`
   }
+  
   render () {
     const { submissions } = this.props;
 

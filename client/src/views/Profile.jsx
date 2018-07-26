@@ -33,7 +33,7 @@ class Profile extends Component {
       url: `/api/users/${_id}`
     })
       .then((apiResponse) => {
-        // console.log(apiResponse.data.payload)
+        console.log(apiResponse.data.payload)
         // submissions payload is in user payload
         let { submissions } = apiResponse.data.payload;
         this.setState({ submissions: submissions })

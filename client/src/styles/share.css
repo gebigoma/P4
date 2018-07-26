@@ -1,3 +1,7 @@
 .share-button {
   cursor: pointer;
 }
+
+.display {
+  display: inline-block;
+}

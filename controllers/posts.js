@@ -62,7 +62,8 @@ exports.create = (req, res) => {
             });
             uploader.on('end', function () {
               console.log("done uploading");
-  
+              fs.remove(tempUploadPath)
+              
               const tags = fields.tags.split(', ')
               Post.create({ ...fields, _by: req.user, tags, featuredImageName: files.image.name }, (err, newPost) => {
                 if (err) {

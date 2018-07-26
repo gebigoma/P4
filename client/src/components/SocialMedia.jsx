@@ -19,9 +19,9 @@ import '../styles/share.css'
 
 class SocialMedia extends Component {
   
-  const { title, shareUrl, hashtag, body } = this.props
-
+  
   render() {
+    const { title, shareUrl, hashtag, body } = this.props
     return (
       <div>
         <div className="display">

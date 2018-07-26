@@ -1,7 +1,7 @@
 import React from 'react'
 
 const SubmitForm = (props) => {
-  let { handleChange, handleFileSelect, handleSubmit, title, body, post_url, img, tags } = props
+  let { handleChange, handleFileSelect, handleSubmit, title, body, post_url, tags } = props
   return (
     <form onSubmit={handleSubmit}>
         <input 

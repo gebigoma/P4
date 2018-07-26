@@ -107,7 +107,7 @@ class Profile extends Component {
             return (
               <li key={s._id}>
                 <div className="image">
-                  <img src={s.img} /* <a href={this.formatLink(s.post_url)} target="_blank"> </a> */ />
+                <img src={s.featuredImageUrl} /* <a href={this.formatLink(s.post_url)} target="_blank"> </a> */ />
                 </div>
                 <div className="content">
                   <div className="header">

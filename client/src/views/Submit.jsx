@@ -10,7 +10,6 @@ class Submit extends Component {
     title: "",
     body: "",
     post_url: "",
-    img: "",
     tags: [" "],
     selectedFile : null
   }
@@ -44,11 +43,10 @@ class Submit extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     const fd = new FormData()
-    let { title, body, post_url, img, tags } = this.state
+    let { title, body, post_url, tags } = this.state
     fd.append('title', title)
     fd.append('body', body)
     fd.append('post_url', post_url)
-    fd.append('img', img)
     fd.append('tags', tags)
     fd.append('image', this.state.selectedFile, this.state.selectedFile.name)
     apiClient.post('/api/submissions', fd, {
@@ -61,7 +59,7 @@ class Submit extends Component {
       })
   }
   render() {
-    let { title, body, post_url, img, tags } = this.state
+    let { title, body, post_url, tags } = this.state
     return (
       <div>
         <h1>Submit</h1>
@@ -72,7 +70,6 @@ class Submit extends Component {
           title={title}
           body={body}
           post_url={post_url}
-          img={img}
           tags={tags}
         />
       </div>

@@ -11,6 +11,7 @@ import Submit from './views/Submit'
 import Profile from './views/Profile'
 import ShowSubmission from './views/Show';
 import Collection from './views/Collection';
+import TestUpload from './TestUpload'
 
 class App extends Component {
 

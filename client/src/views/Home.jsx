@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import SubmissionCard from '../components/SubmissionCard'
 
 const apiClient = axios.create()
 
 class Home extends Component {
+  
   state = {
     submissions: []
   }
@@ -18,45 +19,12 @@ class Home extends Component {
       })
   }
 
-  formatLink(url) {
-    if(url.includes('http')) return url
-    return `http://${url}`
-  }
-
   render() {
+    const { submissions } = this.state
     return(
-      
-      <div className="ui link cards">
-        <div className="card">
-        <ul>
-          {this.state.submissions.map((s) => {
-            return (
-              <li key={s._id}>
-                <div className="image">
-                  <img src={s.featuredImageUrl} /* <a href={this.formatLink(s.post_url)} target="_blank"> </a> */ />
-                </div>
-                <div className="content">
-                  <div className="header">
-                    <Link to={`/submissions/${s._id}`}> {s.title}</Link>
-                  </div>
-                  <div className="description">
-                    {s.body}
-                  </div>
-              </div>
-                  <div className="extra content">
-                    Tags: {s.tags.join(' , ')}
-                    <span className="right floated">By:  <Link to={`/collection/${s._by._id}`}>{s._by.name}</Link></span>
-                  </div>
-              </li>
-            )
-          })}
-        </ul>
-        </div>
-      </div>
+      <SubmissionCard submissions={submissions} />
     )
   }
-
-
 }
 
 export default Home

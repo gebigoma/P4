@@ -82,7 +82,7 @@ class Profile extends Component {
     // console.log(this.state.currentUser)
     // fields set from state
     // current user set from App.js
-    let { fields, formEnabled } = this.state;
+    let { fields, formEnabled, submissions } = this.state;
     let { currentUser } = this.props
     return (
       <div>
@@ -98,7 +98,7 @@ class Profile extends Component {
         <div>
           <a href='#' onClick={this.deleteProfile}>Delete Profile</a>
         </div>
-
+      
 
       <div className="ui link cards">
         <div className="card">
@@ -126,7 +126,7 @@ class Profile extends Component {
           })}
         </ul>
         </div>
-      </div>
+      </div> 
 
 
       </div>

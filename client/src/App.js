@@ -11,7 +11,6 @@ import Submit from './views/Submit'
 import Profile from './views/Profile'
 import ShowSubmission from './views/Show';
 import Collection from './views/Collection';
-import TestUpload from './TestUpload'
 
 class App extends Component {
 
@@ -78,7 +77,6 @@ class App extends Component {
               />
             ) 
           }} />
-          <Route path="/testing" component={TestUpload} />
           <Route path="/collection/:id" component={Collection} />
           <Route path="/submissions/:id" component={ShowSubmission} />
           <Route exact path="/" component={Home} />

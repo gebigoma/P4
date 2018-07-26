@@ -21,7 +21,7 @@ class ShowCard extends Component {
 
   render() {
   const { submission } = this.props;
-  const shareUrl = `${this.formatLink(window.location.href)}`;
+  const shareUrl = `${window.location.href}`;
   const title = `${submission.title}`;
   console.log(window.location.href)
 

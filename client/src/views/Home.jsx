@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import axios from 'axios'
 import SubmissionCard from '../components/SubmissionCard'
-import '../styles/home.css'
+import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
 const apiClient = axios.create()
 
@@ -23,9 +23,24 @@ class Home extends Component {
   render() {
     const { submissions } = this.state
     return(
-      <div className="container">
+      <Fragment>
       <SubmissionCard submissions={submissions} />
-      </div>
+
+        <Modal trigger={<Button>Show Modal</Button>}>
+          <Modal.Header>Select a Photo</Modal.Header>
+          <Modal.Content image>
+            <Image wrapped size='medium' src='/images/avatar/large/rachel.png' />
+            <Modal.Description>
+              <Header>Default Profile Image</Header>
+              <p>We've found the following gravatar image associated with your e-mail address.</p>
+              <p>Is it okay to use this photo?</p>
+            </Modal.Description>
+          </Modal.Content>
+        </Modal>
+
+
+  
+      </Fragment>
     )
   }
 }

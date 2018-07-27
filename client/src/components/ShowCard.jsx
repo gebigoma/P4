@@ -26,10 +26,10 @@ class ShowCard extends Component {
   render() {
   const { submission } = this.props;
   const shareUrl = window.location.href;
-  const title = `${submission.title}`;
-  const hashtag = `#sugarfreegallery`
-  const body = `${submission.body}`
-  const media = `${submission.featuredImageUrl}`
+  const title = submission.title;
+  const hashtag = "#sugarfreegallery";
+  const body = submission.body
+  const media = submission.featuredImageUrl
 
     return (
       <div>
@@ -64,8 +64,8 @@ class ShowCard extends Component {
 
         <div className="display">
         <PinterestShareButton
-          url={String(window.location)}
-          media={`${String(window.location)}/${media}`}
+          url={shareUrl}
+          media={media}
           windowWidth={1000}
           windowHeight={730}
           className="share-button">

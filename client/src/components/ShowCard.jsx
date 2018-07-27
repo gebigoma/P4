@@ -25,9 +25,7 @@ class ShowCard extends Component {
 
   render() {
   const { submission } = this.props;
-  // const shareUrl = `${this.formatLink(window.location.href)}`;
-  console.log(window.location.href)
-  const shareUrl = "https://sugarfreegallery.com"
+  const shareUrl = window.location.href;
   const title = `${submission.title}`;
   const hashtag = `#sugarfreegallery`
   const body = `${submission.body}`

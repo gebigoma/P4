@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import SubmissionCard from '../components/SubmissionCard'
+import '../styles/home.css'
 
 const apiClient = axios.create()
 
@@ -22,7 +23,9 @@ class Home extends Component {
   render() {
     const { submissions } = this.state
     return(
+      <div className="container">
       <SubmissionCard submissions={submissions} />
+      </div>
     )
   }
 }

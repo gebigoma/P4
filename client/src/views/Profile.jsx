@@ -34,6 +34,7 @@ class Profile extends Component {
     })
       .then((apiResponse) => {
         console.log(apiResponse.data.payload)
+        debugger
         // submissions payload is in user payload
         let { submissions } = apiResponse.data.payload;
         this.setState({ submissions: submissions })

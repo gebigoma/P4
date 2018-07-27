@@ -1,47 +1,62 @@
 import React from 'react'
+import { Button, Form } from 'semantic-ui-react'
 
 const SubmitForm = (props) => {
   let { handleChange, handleFileSelect, handleSubmit, title, body, post_url, tags } = props
   return (
-    <form onSubmit={handleSubmit}>
-        <input 
-          onChange={handleChange} 
-          type="text" 
-          placeholder="Title" 
-          name="title" 
-          autoComplete="off" 
-          value={title} 
+    <Form onSubmit={handleSubmit}>
+      <Form.Field>
+        <label>Title</label>
+        <input
+          onChange={handleChange}
+          type="text"
+          placeholder="Title"
+          name="title"
+          autoComplete="off"
+          value={title}
         />
-        <input 
-          onChange={handleChange} 
-          type="text" 
-          placeholder="Description" 
-          name="body" 
-          autoComplete="off" 
+      </Form.Field>
+      <Form.Field>
+        <label>Description</label>
+        <input
+          onChange={handleChange}
+          type="text"
+          placeholder="Description"
+          name="body"
+          autoComplete="off"
           value={body}
         />
-        <input 
-          onChange={handleChange} 
-          type="text" 
-          placeholder="Post Url" 
-          name="post_url" 
-          autoComplete="off" 
+      </Form.Field>
+      <Form.Field>
+        <label>URL to Post</label>
+        <input
+          onChange={handleChange}
+          type="text"
+          placeholder="Post Url"
+          name="post_url"
+          autoComplete="off"
           value={post_url}
         />
-        <input 
-          onChange={handleChange} 
-          type="text" 
-          placeholder="Tags" 
-          name="tags" 
-          autoComplete="off" 
+      </Form.Field>
+      <Form.Field>
+        <label>Tags</label>
+        <input
+          onChange={handleChange}
+          type="text"
+          placeholder="Tags (up to 10, comma seperated)"
+          name="tags"
+          autoComplete="off"
           value={tags}
         />
-        <input 
-          type="file" 
-          onChange={handleFileSelect} 
+      </Form.Field>
+      <Form.Field>
+        <input
+          type="file"
+          onChange={handleFileSelect}
         />
-        <button>Submit</button>
-      </form>
+      </Form.Field>
+      <Button type='submit'>Submit</Button>
+    </Form>
   )
 }
 

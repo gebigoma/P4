@@ -20,7 +20,7 @@ class SubmissionCard extends Component {
               <div className="SubmissionCard">
                 {submissions.map((s) => {
                   return (
-                    <Card>
+                    <Card key={s._id}>
                       <a href={this.formatLink(s.post_url)} target="_blank">
                         <Image alt={s.title} src={s.featuredImageUrl} />
                       </a>

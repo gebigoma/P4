@@ -26,20 +26,6 @@ class Submit extends Component {
     })
   }
 
-  // fileUploadHandler = () => {
-  //   const fd = new FormData()
-  //   fd.append('image', this.state.selectedFile, this.state.selectedFile.name)
-  //   // stores file in cloud storage
-    // axios.post('my-domain.com/file-upload', fd, {
-    //   onUploadProgress: progressEvent => {
-    //     console.log('Upload Progress: ' + Math.round(progressEvent.loaded / progressEvent.total * 100) + '%')
-    //   }
-    // })
-  //     .then(res => {
-
-  //     })
-  // }
-
   handleSubmit = (event) => {
     event.preventDefault()
     const fd = new FormData()

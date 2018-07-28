@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import SubmitForm from '../components/SubmitForm'
+import { Button, Modal } from 'semantic-ui-react'
+import { withRouter } from 'react-router-dom'
+
 
 const apiClient = axios.create()
 
-class Submit extends Component {
+class SubmitModal extends Component {
 
   state = {
     title: "",
@@ -41,15 +44,18 @@ class Submit extends Component {
       }
     })
       .then(response => {
+        this.props.onSubmitSuccess(response.data.payload)
         this.props.history.push('/')
       })
   }
   render() {
     let { title, body, post_url, tags } = this.state
+    const { open, onClose } = this.props
     return (
       <div>
-        <h1>Submit</h1>
-        <SubmitForm
+        <Modal open={open} onClose={onClose}>
+          <Modal.Content>
+          <SubmitForm
           handleChange={this.handleChange}
           handleFileSelect={this.handleFileSelect}
           handleSubmit={this.handleSubmit}
@@ -58,9 +64,14 @@ class Submit extends Component {
           post_url={post_url}
           tags={tags}
         />
+          </Modal.Content>
+        </Modal>
       </div>
     )
   }
 }
 
-export default Submit
+// withRouter is a function that comes with react-router-dom
+// it creates a version of your component that comes with all of the
+// route props we need (for instance, to redirect...)
+export default withRouter(SubmitModal)

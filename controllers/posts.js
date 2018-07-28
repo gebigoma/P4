@@ -7,7 +7,7 @@ const
 
 
 exports.index = (req, res) => {
-  Post.find({}).populate('_by').exec((err, posts) => {
+  Post.find({}).populate('_by').sort('-createdAt').exec((err, posts) => {
     if (err) {
       res.json({ status: "FAIL", err })
     } else {

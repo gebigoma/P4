@@ -5,6 +5,7 @@ const SubmitForm = (props) => {
   let { handleChange, handleFileSelect, handleSubmit, title, body, post_url, tags } = props
   return (
     <Form onSubmit={handleSubmit}>
+    <Form.Group widths='equal'>
       <Form.Field>
         <label>Title</label>
         <input
@@ -14,17 +15,6 @@ const SubmitForm = (props) => {
           name="title"
           autoComplete="off"
           value={title}
-        />
-      </Form.Field>
-      <Form.Field>
-        <label>Description</label>
-        <input
-          onChange={handleChange}
-          type="text"
-          placeholder="Description"
-          name="body"
-          autoComplete="off"
-          value={body}
         />
       </Form.Field>
       <Form.Field>
@@ -38,7 +28,9 @@ const SubmitForm = (props) => {
           value={post_url}
         />
       </Form.Field>
-      <Form.Field>
+    </Form.Group>
+    <Form.Group widths='equal'>
+    <Form.Field>
         <label>Tags</label>
         <input
           onChange={handleChange}
@@ -50,11 +42,22 @@ const SubmitForm = (props) => {
         />
       </Form.Field>
       <Form.Field>
+      <label>File Upload</label>
         <input
           type="file"
           onChange={handleFileSelect}
         />
       </Form.Field>
+    </Form.Group>
+      <Form.TextArea 
+        label='Description' 
+        placeholder='Enter a short description of dish...' 
+        onChange={handleChange}
+        type="text"
+        name="body"
+        autoComplete="off"
+        value={body}
+      />
       <Button type='submit'>Submit</Button>
     </Form>
   )

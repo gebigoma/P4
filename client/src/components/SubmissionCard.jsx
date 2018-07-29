@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Image, Grid } from 'semantic-ui-react'
+
 
 class SubmissionCard extends Component {
 
@@ -14,7 +15,7 @@ class SubmissionCard extends Component {
 
     return (
       <div>
-        <Card.Group itemsPerRow={4}>
+        <Card.Group centered doubling>
           {submissions.map((s) => {
             return (
               <Card key={s._id}>

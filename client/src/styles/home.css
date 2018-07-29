@@ -1,32 +1,11 @@
-/*.container {
-  margin: 0;
-  padding: 0;
-}
-
-img {
-  width: 300px;
-}
-
-.display {
-  display: inline-block;
-}
-
-.card {
-  width: 300px !important;
-}
-
-.cards {
-
-}
-
-.margin {
-  margin: 0 8px;
-}
-
-.bottom {
-  margin: 0px 8px 50px 8px;
-}
-
-.hr {
-  color: rgb(211, 211, 211);
+   /* .ui.container {  
+    padding: 0px;
 } */
+
+/* up to 600 is max-width */
+@media only screen and (max-width: 600px) {
+  body {
+      background-color: lightblue;
+  }
+}
+

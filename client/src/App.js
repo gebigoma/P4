@@ -12,6 +12,7 @@ import Profile from './views/Profile'
 import ShowSubmission from './views/Show';
 import Collection from './views/Collection';
 import { Container } from 'semantic-ui-react'
+import './styles/home.css'
 
 class App extends Component {
 
@@ -52,7 +53,7 @@ class App extends Component {
     return (
       <Fragment>
         <NavBar currentUser={this.state.currentUser} onSubmitClick={this.openSubmitModal.bind(this)} />
-        <Container>
+        <Container fluid >
           <Switch>
             <Route path="/signup" render={(routeProps) => {
               return (

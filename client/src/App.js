@@ -38,6 +38,7 @@ class App extends Component {
   }
 
   openSubmitModal() { this.setState({ submitModalOpen: true }) }
+
   closeSubmitModal() { this.setState({ submitModalOpen: false }) }
 
   onSubmitSuccess(newSubmission) {

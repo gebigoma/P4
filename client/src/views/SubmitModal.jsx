@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import SubmitForm from '../components/SubmitForm'
-import { Button, Modal } from 'semantic-ui-react'
+import { Modal } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 
 

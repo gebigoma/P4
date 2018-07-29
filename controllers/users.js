@@ -17,7 +17,7 @@ module.exports = {
 		User.findById(req.params.id, (err, user) => {
 			if(err) return res.json({message: "ERROR", payload: null, code: err.code})
 			// querying mongo to look up posts by user.id
-			Post.find({ _by: user._id }, (err, submissions) => {
+			Post.find({ _by: user._id }).populate('_by').sort('-createdAt').exec((err, submissions) => {
 				if(err) return res.json({message: "ERROR", payload: null, code: err.code})
 				res.json({ message: "SUCCESS", payload: { user, submissions } })
 			})
@@ -28,7 +28,7 @@ module.exports = {
 	showSubmissions: (req, res) => {
 		User.findById(req.params.id, (err, user) => {
 			if (err) return res.json({ message: "ERROR", payload: null, code: err.code })
-			Post.find({ _by: user._id }, (err, submissions) => {
+			Post.find({ _by: user._id }).populate('_by').sort('-createdAt').exec((err, submissions) => {
 				if (err) return res.json({ message: "ERROR", payload: null, code: err.code })
 				res.json({ message: "SUCCESS", payload: { submissions } })
 			})

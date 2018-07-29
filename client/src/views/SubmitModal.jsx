@@ -46,6 +46,14 @@ class SubmitModal extends Component {
       .then(response => {
         this.props.onSubmitSuccess(response.data.payload)
         this.props.history.push('/')
+        // clear the form
+        this.setState({
+          title: "",
+          body: "",
+          post_url: "",
+          tags: [" "],
+          selectedFile : null
+        })
       })
   }
   render() {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { Container, Segment, Grid, Header, Image} from 'semantic-ui-react'
 import SocialMedia from './SocialMedia'
 import '../styles/share.css'
@@ -30,7 +31,7 @@ class ShowCard extends Component {
                 </Header>
                 <p style={{ fontSize: '1.33em' }}>{submission.body}</p>
                 <p style={{ fontSize: '1.33em' }}>{submission.tags.join(', ')}</p>
-                <p>Submitted by: {this.toTitleCase(submission._by.name)}</p>
+                <p>Submitted by: <Link to={`/collection/${submission._by._id}`}>{this.toTitleCase(submission._by.name)}</Link></p>
                 <SocialMedia submission={submission} />
               </Grid.Column>
               <Grid.Column floated='left' width={6}>

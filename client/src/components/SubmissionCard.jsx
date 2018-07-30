@@ -10,6 +10,12 @@ class SubmissionCard extends Component {
     return `http://${url}`
   }
 
+  toTitleCase(str) {
+    return str.toLowerCase().split(' ').map(function(word) {
+      return word.replace(word[0], word[0].toUpperCase());
+    }).join(' ');
+  }
+  
   render() {
     const { submissions } = this.props;
 
@@ -24,7 +30,7 @@ class SubmissionCard extends Component {
                 </a>
                 <Card.Content>
                   <Card.Header>
-                    <Link to={`/submissions/${s._id}`}>{s.title}</Link>
+                    <Link to={`/submissions/${s._id}`}>{this.toTitleCase(s.title)}</Link>
                   </Card.Header>
                   <Card.Meta>
                     <span className='date'>{s.tags.join(', ')}</span>

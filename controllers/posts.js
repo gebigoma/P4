@@ -21,7 +21,16 @@ exports.show = (req, res) => {
     if (err) {
       res.json({ status: "FAIL", err })
     } else {
-      res.json({ status: "SUCCESS", payload: postFromDB })
+      console.log(postFromDB._id.constructor)
+      Post.find({tags: { $in: postFromDB.tags }}, (err, relatedFromDB) => {
+        const relatedPosts = relatedFromDB.filter((p) => {
+          // turns both ids into string to check if they are the same, returns Boolean
+          // JSON.stringify({}) === JSON.stringify({})
+          // equals is specific to mongo ._id
+          return !p._id.equals(postFromDB._id)
+        })
+        res.json({ status: "SUCCESS", payload: postFromDB, relatedPosts })
+      })
     }
   })
 }

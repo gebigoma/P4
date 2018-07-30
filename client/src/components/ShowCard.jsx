@@ -22,7 +22,7 @@ class ShowCard extends Component {
 
     return (
       <Container>
-        <Segment style={{ padding: '8em 0em' }} vertical>
+        <Segment style={{ padding: '4em 0em' }} vertical>
           <Grid container stackable verticalAlign='middle'>
             <Grid.Row>
               <Grid.Column floated='right' width={6}>

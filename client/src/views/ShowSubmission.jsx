@@ -15,20 +15,17 @@ class ShowSubmission extends Component {
     // console.log(id)
     apiClient({ method: 'get', url: `/api/submissions/${id}` })
       .then((apiResponse) => {
-        this.setState({ submission: apiResponse.data.payload, relatedPosts: apiResponse.data.relatedPosts })
+        this.setState
+              ({ submission: apiResponse.data.payload, 
+              relatedSubmissions: apiResponse.data.relatedSubmissions })
       })
   }
 
   render() {
-    const { submission, relatedPosts } = this.state;
+    const { submission, relatedSubmissions } = this.state;
     if (!submission) return <h1>Loading...</h1>
     return ( 
-      <div>
-        <ShowCard submission={submission} />
-        {relatedPosts.map(s => {
-          return <h2 key={s._id}>{s.title}</h2>
-        })}
-      </div>
+        <ShowCard submission={submission} relatedSubmissions={relatedSubmissions} />
     )
   }
 }

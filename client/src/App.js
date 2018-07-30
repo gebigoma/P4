@@ -9,7 +9,7 @@ import VIP from './views/VIP';
 import LogOut from './views/LogOut'
 import SubmitModal from './views/SubmitModal'
 import Profile from './views/Profile'
-import ShowSubmission from './views/Show';
+import ShowSubmission from './views/ShowSubmission';
 import Collection from './views/Collection';
 import { Container } from 'semantic-ui-react'
 import './styles/home.css'
@@ -75,13 +75,6 @@ class App extends Component {
               ? <VIP />
               : <Redirect to="/login" />
             }} />
-            {/* <Route path="/submit" render={(routeProps) => {
-              return this.state.currentUser
-              ? ( 
-                <SubmitModal {...routeProps} />
-              )
-              : <Redirect to="/login" />
-            }} /> */}
             <Route path="/profile" render={(routeProps) => {
               return this.state.currentUser
               ? (
@@ -100,13 +93,19 @@ class App extends Component {
                 />
               ) 
             }} />
-            <Route path="/collection/:id" component={Collection} />
             <Route path="/submissions/:id" component={ShowSubmission} />
+            {/* <Route path="/submissions/:id" render={(routeProps) => {
+              return (
+                <ShowSubmission {...routeProps}
+                submission={this.state.submission} relatedSubmissions={this.state.relatedSubmissions}
+                />
+              )
+            }} /> */}
+            <Route path="/collection/:id" component={Collection} />
             <Route exact path="/" render={(routeProps) => {
               return <Home {...routeProps} submissions={this.state.submissions} />
             }} />
           </Switch>
-
           {this.state.currentUser && (
             <SubmitModal
               open={this.state.submitModalOpen}

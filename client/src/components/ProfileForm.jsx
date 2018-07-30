@@ -1,27 +1,42 @@
 import React from 'react';
+import { Form, Segment } from 'semantic-ui-react'
 
 const ProfileForm = (props) => {
-  let { name, email, website, handleSubmit, handleChange } = props;
+  let { name, email, website, handleSubmit, handleChange, deleteProfile } = props;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input 
-        type="text"
-        name="name"
-        onChange={handleChange} 
-        value={name}/>
-      <input 
-        type="text"
-        name="email"
-        onChange={handleChange} 
-        value={email}/>
-      <input 
-        type="text"
-        name="website"
-        onChange={handleChange} 
-        value={website}/>
-        <button>Submit</button>
-    </form>
+    <Segment inverted>
+      <Form>
+        <Form.Group widths='equal'>
+          <Form.Input
+            fluid label='Name'
+            placeholder='Name'
+            type="text"
+            name="name"
+            onChange={handleChange}
+            value={name}
+          />
+          <Form.Input
+            fluid label='Email'
+            placeholder='Email'
+            type="text"
+            name="email"
+            onChange={handleChange}
+            value={email}
+          />
+          <Form.Input
+            fluid label='Website'
+            placeholder='Website'
+            type="text"
+            name="website"
+            onChange={handleChange}
+            value={website}
+          />
+        </Form.Group>
+        <Form.Button>Submit</Form.Button>
+        <Form.Button color='red' size='mini' onClick={deleteProfile}>Delete Profile</ Form.Button>
+      </Form>
+    </Segment>
   )
 };
 

@@ -4,7 +4,6 @@ import SubmitForm from '../components/SubmitForm'
 import { Modal } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 
-
 const apiClient = axios.create()
 
 class SubmitModal extends Component {

@@ -4,7 +4,7 @@ import axios from 'axios'
 import ProfileForm from '../components/ProfileForm';
 import SubmissionCard from '../components/SubmissionCard'
 import ProfileDetail from '../components/ProfileDetail'
-import { Container, Button } from 'semantic-ui-react'
+import { Container, Button, Segment } from 'semantic-ui-react'
 
 const apiClient = axios.create()
 
@@ -73,10 +73,6 @@ class Profile extends Component {
       })
   }
 
-    formatLink(url) {
-    if (url.includes('http')) return url
-    return `http://${url}`
-  }
 
   render() {
     // console.log(this.state.currentUser)
@@ -85,19 +81,42 @@ class Profile extends Component {
     let { fields, formEnabled, submissions } = this.state;
     let { currentUser } = this.props
     return (
-      <Fragment >
-        <Container>
+      <Fragment>
+<Container>
+      <Segment.Group>
+      <Segment><ProfileDetail fields={fields} currentUser={currentUser} /></Segment>
+        <Segment>{formEnabled
+              ? <ProfileForm 
+                  name={fields.name}  
+                  email={fields.email} 
+                  website={fields.website} 
+                  handleChange={this.handleChange} 
+                  handleSubmit={this.handleSubmit} 
+                  deleteProfile={this.deleteProfile} />
+              : <Button onClick={this.toggleForm}>Edit Profile</Button>
+              }</Segment>
+      </Segment.Group>
+
+</Container>
+      <SubmissionCard submissions={submissions} />
+      </Fragment>
+      /* <Fragment >
+          <Segment>
           <ProfileDetail fields={fields} currentUser={currentUser} />
             {formEnabled
-              ? <ProfileForm name={fields.name} email={fields.email} website={fields.website} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
-              : <Button onClick={this.toggleForm}>Edit Profile</Button>}
-            <div>
-              <Button color='red' size='mini' onClick={this.deleteProfile}>Delete Profile</ Button>
-          </div>
-        </Container>
+              ? <ProfileForm 
+                  name={fields.name}  
+                  email={fields.email} 
+                  website={fields.website} 
+                  handleChange={this.handleChange} 
+                  handleSubmit={this.handleSubmit} 
+                  deleteProfile={this.deleteProfile} />
+              : <Button floated="right" onClick={this.toggleForm}>Edit Profile</Button>
+              }
 
         <SubmissionCard submissions={submissions} />
-      </ Fragment>
+        </Segment>
+      </ Fragment> */
     )
   }
 }

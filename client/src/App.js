@@ -50,6 +50,7 @@ class App extends Component {
   }
 
   render() {
+    
     return (
       <Fragment>
         <NavBar currentUser={this.state.currentUser} onSubmitClick={this.openSubmitModal.bind(this)} />

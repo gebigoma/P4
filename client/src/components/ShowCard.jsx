@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { Container, Segment, Grid, Header, Image, Card } from 'semantic-ui-react'
 import SocialMedia from './SocialMedia'
 import '../styles/share.css'
@@ -18,7 +18,7 @@ class ShowCard extends Component {
   }
 
   render() {
-    const { submission, relatedSubmissions } = this.props;
+    const { submission, relatedSubmissions, handleClick } = this.props;
 
     return (
       <Fragment>

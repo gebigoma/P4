@@ -12,12 +12,23 @@ class ShowSubmission extends Component {
   
   componentDidMount() {
     const id = this.props.match.params.id
-    // console.log(id)
+    this.fetchSubmission(id)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    let { id } = this.props.match.params;
+    if (id != nextProps.match.params.id) {
+      this.fetchSubmission(nextProps.match.params.id)
+    }
+  }
+
+  fetchSubmission(id) {
     apiClient({ method: 'get', url: `/api/submissions/${id}` })
       .then((apiResponse) => {
-        this.setState
-              ({ submission: apiResponse.data.payload, 
-              relatedSubmissions: apiResponse.data.relatedSubmissions })
+        this.setState({ 
+          submission: apiResponse.data.payload, 
+          relatedSubmissions: apiResponse.data.relatedSubmissions 
+        })
       })
   }
 
@@ -25,7 +36,8 @@ class ShowSubmission extends Component {
     const { submission, relatedSubmissions } = this.state;
     if (!submission) return <h1>Loading...</h1>
     return ( 
-        <ShowCard submission={submission} relatedSubmissions={relatedSubmissions} />
+        <ShowCard 
+          submission={submission} relatedSubmissions={relatedSubmissions} />
     )
   }
 }

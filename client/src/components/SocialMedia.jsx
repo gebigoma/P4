@@ -6,7 +6,6 @@ import {
   RedditShareButton,
   TumblrShareButton,
   EmailShareButton,
-
   FacebookIcon,
   TwitterIcon,
   PinterestIcon,
@@ -18,7 +17,6 @@ import '../styles/share.css'
 
 
 class SocialMedia extends Component {
-  
   
   render() {
     const { submission } = this.props
@@ -36,9 +34,7 @@ class SocialMedia extends Component {
           url={shareUrl}
           hashtag={hashtag} 
           className="share-button">
-            <FacebookIcon 
-            size={32}
-            round/> 
+            <FacebookIcon size={32} /> 
         </ FacebookShareButton>
         </div>
 
@@ -47,9 +43,7 @@ class SocialMedia extends Component {
           url={shareUrl}
           title={title}
           className="share-button">
-          <TwitterIcon
-            size={32}
-            round />
+          <TwitterIcon size={32} />
         </TwitterShareButton>
         </div>
 
@@ -60,7 +54,7 @@ class SocialMedia extends Component {
           windowWidth={1000}
           windowHeight={730}
           className="share-button">
-          <PinterestIcon size={32} round />
+          <PinterestIcon size={32} />
         </PinterestShareButton>
         </div>
 
@@ -71,9 +65,7 @@ class SocialMedia extends Component {
           windowWidth={660}
           windowHeight={460}
           className="share-button">
-          <RedditIcon
-            size={32}
-            round />
+          <RedditIcon size={32} />
         </RedditShareButton>
         </div>
 
@@ -84,9 +76,7 @@ class SocialMedia extends Component {
           windowWidth={660}
           windowHeight={460}
           className="share-button">
-          <TumblrIcon
-            size={32}
-            round />
+          <TumblrIcon size={32} />
         </TumblrShareButton>
         </div>
 
@@ -96,9 +86,7 @@ class SocialMedia extends Component {
           subject={title}
           body={body}
           className="share-button">
-          <EmailIcon
-            size={32}
-            round />
+          <EmailIcon size={32} />
         </EmailShareButton>
         </div>
       </div>

@@ -1,21 +1,6 @@
 import React, { Component } from 'react'
-import { Container } from 'semantic-ui-react'
+import { Container, Segment, Grid, Header, Image} from 'semantic-ui-react'
 import SocialMedia from './SocialMedia'
-import {
-  FacebookShareButton,
-  TwitterShareButton,
-  PinterestShareButton,
-  RedditShareButton,
-  TumblrShareButton,
-  EmailShareButton,
-
-  FacebookIcon, 
-  TwitterIcon,
-  PinterestIcon,
-  RedditIcon, 
-  TumblrIcon,
-  EmailIcon
-} from 'react-share';
 import '../styles/share.css'
 
 class ShowCard extends Component {
@@ -25,22 +10,39 @@ class ShowCard extends Component {
     return `http://${url}`
   }
 
+  toTitleCase(str) {
+    return str.replace(/\w\S*/g, function(txt){
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+  }   
+
   render() {
-    
-  const { submission } = this.props;
+    const { submission } = this.props;
 
     return (
-      <Container >
-        <h1>{submission.title}</h1>
-        <p>{submission.body}</p>
-        <p> <a href={this.formatLink(submission.post_url)} target="_blank"> <img alt={submission.title} src={submission.featuredImageUrl} /> </a></p>
-        <p>{submission.tags.join(', ')}</p>
-        <p>{submission._by.name}</p>
-      
-      <SocialMedia submission={submission} />
-    </ Container>
+      <Container>
+        <Segment style={{ padding: '8em 0em' }} vertical>
+          <Grid container stackable verticalAlign='middle'>
+            <Grid.Row>
+              <Grid.Column floated='right' width={6}>
+                <Header as='h3' style={{ fontSize: '2em' }}>
+                  {this.toTitleCase(submission.title)}
+                </Header>
+                <p style={{ fontSize: '1.33em' }}>{submission.body}</p>
+                <p style={{ fontSize: '1.33em' }}>{submission.tags.join(', ')}</p>
+                <p>Submitted by: {this.toTitleCase(submission._by.name)}</p>
+                <SocialMedia submission={submission} />
+              </Grid.Column>
+              <Grid.Column floated='left' width={6}>
+                <a href={this.formatLink(submission.post_url)} target="_blank">
+                  <Image bordered rounded size='large' src={submission.featuredImageUrl} /> </a>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment>
+      </Container>
     )
-  } 
+  }
 }
 
 export default ShowCard

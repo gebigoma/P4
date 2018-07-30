@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import httpClient from '../httpClient'
 import axios from 'axios'
 import ProfileForm from '../components/ProfileForm';
 import SubmissionCard from '../components/SubmissionCard'
 import ProfileDetail from '../components/ProfileDetail'
+import { Container, Button } from 'semantic-ui-react'
 
 const apiClient = axios.create()
 
@@ -84,20 +85,19 @@ class Profile extends Component {
     let { fields, formEnabled, submissions } = this.state;
     let { currentUser } = this.props
     return (
-      <div>
-        <ProfileDetail fields={fields} currentUser={currentUser} />
+      <Fragment >
+        <Container>
+          <ProfileDetail fields={fields} currentUser={currentUser} />
+            {formEnabled
+              ? <ProfileForm name={fields.name} email={fields.email} website={fields.website} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
+              : <Button onClick={this.toggleForm}>Edit Profile</Button>}
+            <div>
+              <Button color='red' size='mini' onClick={this.deleteProfile}>Delete Profile</ Button>
+          </div>
+        </Container>
 
-        <div>
-          {formEnabled
-            ? <ProfileForm name={fields.name} email={fields.email} website={fields.website} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
-            : <button onClick={this.toggleForm}>Edit Profile</button>}
-        </div>
-        <div>
-          <a href='#' onClick={this.deleteProfile}>Delete Profile</a>
-        </div>
-
-      <SubmissionCard submissions={submissions} />
-      </div>
+        <SubmissionCard submissions={submissions} />
+      </ Fragment>
     )
   }
 }

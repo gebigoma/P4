@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Card, Image, Grid } from 'semantic-ui-react'
+import { Card, Image } from 'semantic-ui-react'
 
 
 class SubmissionCard extends Component {

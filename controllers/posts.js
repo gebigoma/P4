@@ -51,7 +51,7 @@ exports.create = (req, res) => {
     fs.ensureDir(`temp`)
       .then(() => {
         sharp(files.image.path)
-          .resize(600)
+          .resize(600, 600)
           .toFile(tempUploadPath)
           .then(info => {
             var params = {

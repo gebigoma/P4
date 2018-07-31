@@ -1,8 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Comfortaa|Poiret+One');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
 .logo {
     /* font-family: 'Amatic SC', cursive; */
     font-family: 'Poiret One', cursive;
     font-size: 30px;
+}
+
+body {
+    font-family: 'Raleway', sans-serif; 
 }
 
 .ui.centered.cards {

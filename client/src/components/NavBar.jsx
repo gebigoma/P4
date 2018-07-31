@@ -2,6 +2,7 @@ import React, { Fragment, Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Menu, Visibility} from 'semantic-ui-react'
 
+
 const capitalize = {
   textTransform: 'capitalize'
 }
@@ -30,7 +31,7 @@ class NavBar extends Component {
             {currentUser
             ? (
               <Fragment>
-                <Menu.Item as={NavLink} to="/profile" name='currentuser'>
+                <Menu.Item as={NavLink} to="/profile" name='currentuser' style={capitalize}>
                   {currentUser.name}
                 </Menu.Item>
                 <Menu.Item onClick={onSubmitClick}>Submit</Menu.Item>

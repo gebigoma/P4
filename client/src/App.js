@@ -54,7 +54,6 @@ class App extends Component {
     return (
       <Fragment>
         <NavBar currentUser={this.state.currentUser} onSubmitClick={this.openSubmitModal.bind(this)} />
-        <Container fluid >
           <Switch>
             <Route path="/signup" render={(routeProps) => {
               return (
@@ -113,7 +112,6 @@ class App extends Component {
               onSubmitSuccess={this.onSubmitSuccess.bind(this)}
             />
           )}
-        </ Container>
       </Fragment>
     )
   }

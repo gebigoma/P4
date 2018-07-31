@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import httpClient from '../httpClient'
+import { Link } from 'react-router-dom'
+import { Form, Button, Grid, Header, Segment, Message } from 'semantic-ui-react'
 
 class SignUp extends Component {
 
@@ -21,7 +23,7 @@ class SignUp extends Component {
     console.log("Signing up..")
     httpClient.signUp(this.state.fields).then((user) => {
       this.setState({ fields: { name: '', website: '', email: '', password: '' } })
-      if(user) {
+      if (user) {
         this.props.onSignUpSuccess()
         // programtically redirects 
         this.props.history.push('/')
@@ -29,23 +31,57 @@ class SignUp extends Component {
     })
   }
 
-  render () {
+  render() {
     return (
-      <div className="SignUp">
-        <div className="row">
-          <div className="">
-            <h1>Sign Up</h1>
-            <form
-              onChange={this.onInPutChange.bind(this)}
-              onSubmit={this.onFormSubmit.bind(this)}>
-              <input type="text" placeholder="Name" name="name" autoComplete="off" />
-              <input type="text" placeholder="Website" name="website" autoComplete="off" />
-              <input type="text" placeholder="Email" name="email" autoComplete="off" />
-              <input type="password" placeholder="Password" name="password" autoComplete="off" />
-              <button>Sign Up</button>
-            </form>
-          </div>
-        </div>
+      <div className='login-signup-container'>
+        <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+          <Grid.Column style={{ maxWidth: 450 }}>
+            <Header as='h2' color='teal' textAlign='center'>Sign-up for an account</Header>
+            <Form size='large'
+                onChange={this.onInPutChange.bind(this)}
+                onSubmit={this.onFormSubmit.bind(this)}>
+              <Segment stacked>
+                <Form.Input
+                  fluid
+                  icon='user'
+                  iconPosition='left'
+                  placeholder='Name'
+                  name="name"
+                  autoComplete="off"
+                />
+                <Form.Input
+                  fluid
+                  icon='desktop icon'
+                  iconPosition='left'
+                  placeholder='Website URL'
+                  name="website"
+                  autoComplete="off"
+                />
+                <Form.Input
+                  fluid
+                  icon='paper plane icon'
+                  iconPosition='left'
+                  placeholder='E-mail address'
+                  name="email"
+                  autoComplete="off"
+                />
+                <Form.Input
+                  fluid
+                  icon='lock'
+                  iconPosition='left'
+                  placeholder='Password'
+                  type='password'
+                  name="password"
+                  autoComplete="off"
+                />
+                <Button color='teal' fluid size='large'>Sign Up</Button>
+              </Segment>
+            </Form>
+            <Message>
+              Already signed up? <Link to="/login">Login</Link>
+            </Message>
+          </Grid.Column>
+        </Grid>
       </div>
     )
   }

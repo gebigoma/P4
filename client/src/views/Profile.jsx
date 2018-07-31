@@ -54,7 +54,7 @@ class Profile extends Component {
     // console.log(this.state.fields)
     httpClient.updateProfile(this.state.fields)
       .then(user => {
-    // set state in App /profile route to handle updating token to update user
+        // set state in App /profile route to handle updating token to update user
         this.props.onUpdateProfileSuccess()
         this.setState({ formEnabled: false })
       })
@@ -68,7 +68,7 @@ class Profile extends Component {
     e.preventDefault()
     httpClient.deleteProfile()
       .then(response => {
-  // set state in App /profile to handle deleting token
+        // set state in App /profile to handle deleting token
         this.props.onDeleteProfileSuccess()
         this.props.history.push('/')
       })
@@ -83,41 +83,24 @@ class Profile extends Component {
     let { currentUser } = this.props
     return (
       <Fragment>
-<Container>
-      <Segment.Group>
-      <Segment><ProfileDetail fields={fields} currentUser={currentUser} /></Segment>
-        <Segment>{formEnabled
-              ? <ProfileForm 
-                  name={fields.name}  
-                  email={fields.email} 
-                  website={fields.website} 
-                  handleChange={this.handleChange} 
-                  handleSubmit={this.handleSubmit} 
-                  deleteProfile={this.deleteProfile} />
+        <Container>
+          <Segment.Group>
+            <Segment><ProfileDetail fields={fields} currentUser={currentUser} /></Segment>
+            <Segment>{formEnabled
+              ? <ProfileForm
+                name={fields.name}
+                email={fields.email}
+                website={fields.website}
+                handleChange={this.handleChange}
+                handleSubmit={this.handleSubmit}
+                deleteProfile={this.deleteProfile} />
               : <Button onClick={this.toggleForm}>Edit Profile</Button>
-              }</Segment>
-      </Segment.Group>
+            }</Segment>
+          </Segment.Group>
 
-</Container>
-      <SubmissionCard submissions={submissions} />
-      </Fragment>
-      /* <Fragment >
-          <Segment>
-          <ProfileDetail fields={fields} currentUser={currentUser} />
-            {formEnabled
-              ? <ProfileForm 
-                  name={fields.name}  
-                  email={fields.email} 
-                  website={fields.website} 
-                  handleChange={this.handleChange} 
-                  handleSubmit={this.handleSubmit} 
-                  deleteProfile={this.deleteProfile} />
-              : <Button floated="right" onClick={this.toggleForm}>Edit Profile</Button>
-              }
-
+        </Container>
         <SubmissionCard submissions={submissions} />
-        </Segment>
-      </ Fragment> */
+      </Fragment>
     )
   }
 }

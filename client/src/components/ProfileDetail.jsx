@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Container, Segment, Grid, Header } from 'semantic-ui-react'
-import '../styles/profile.css'
 
 class ProfileDetail extends Component {
 

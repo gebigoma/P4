@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import SubmissionCard from '../components/SubmissionCard';
+import { Container, Header } from 'semantic-ui-react'
 
 const apiClient = axios.create()
 
@@ -36,7 +37,7 @@ class Collection extends Component {
     // if (!submissionBy) return <h1>Loading...</h1>
     return (
       <div>
-      <h1>{submissionBy}</h1>
+      <Header as='h1' textAlign='center'>{submissionBy}'s gallery</Header>
       <SubmissionCard submissions={submissions} />
       </div>
     )

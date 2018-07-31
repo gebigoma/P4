@@ -23,8 +23,12 @@
     color: #4183c4;
 } */
 
+.ui.centered.cards {
+    margin-top: 40px;
+}
 .ui.secondary.menu {
     background-color: white;
+    margin-bottom: 40px;
 }
 .login-signup-container {
     position: absolute;

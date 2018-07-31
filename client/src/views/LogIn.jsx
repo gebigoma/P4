@@ -35,7 +35,7 @@ class LogIn extends Component {
       <div className='login-signup-container'>
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
-            <Header as='h2' color='teal' textAlign='center'>Log-in to your account</Header>
+            <Header className="login-signup-color" as='h2' textAlign='center'>Log-in to your account</Header>
             <Form size='large'
               onChange={this.onInputChange.bind(this)}
               onSubmit={this.onFormSubmit.bind(this)}>
@@ -59,7 +59,7 @@ class LogIn extends Component {
                   autoComplete="off" 
                   value={password}
                 />
-                <Button color='teal' fluid size='large'>Login</Button>
+                <Button fluid size='large'>Login</Button>
               </Segment>
             </Form>
             <Message>

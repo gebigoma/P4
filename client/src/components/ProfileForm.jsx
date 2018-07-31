@@ -6,7 +6,7 @@ const ProfileForm = (props) => {
 
   return (
     <Segment inverted>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Group widths='equal'>
           <Form.Input
             fluid label='Name'
@@ -33,7 +33,8 @@ const ProfileForm = (props) => {
             value={website}
           />
         </Form.Group>
-        <Form.Button>Submit</Form.Button>
+        <Form.Button type="submit">Submit</Form.Button>
+        {/* <Form.Button>Submit</Form.Button> */}
         <Form.Button color='red' size='mini' onClick={deleteProfile}>Delete Profile</ Form.Button>
       </Form>
     </Segment>

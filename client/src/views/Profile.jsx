@@ -56,6 +56,7 @@ class Profile extends Component {
       .then(user => {
     // set state in App /profile route to handle updating token to update user
         this.props.onUpdateProfileSuccess()
+        this.setState({ formEnabled: false })
       })
   }
 

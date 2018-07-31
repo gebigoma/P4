@@ -18,7 +18,8 @@ class ShowSubmission extends Component {
   componentWillReceiveProps(nextProps) {
     let { id } = this.props.match.params;
     if (id != nextProps.match.params.id) {
-      this.fetchSubmission(nextProps.match.params.id)
+      this.fetchSubmission(nextProps.match.params.id);
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
     }
   }
 

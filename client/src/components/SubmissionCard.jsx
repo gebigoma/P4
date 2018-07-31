@@ -21,7 +21,7 @@ class SubmissionCard extends Component {
 
     return (
       <div>
-        <Card.Group centered doubling>
+        <Card.Group centered doubling={true}>
           {submissions.map((s) => {
             return (
               <Card key={s._id}>

@@ -26,9 +26,8 @@ class Collection extends Component {
       .then((apiResponse) => {
         console.log(apiResponse.data)
         let { submissions } = apiResponse.data.payload   
-        let { submissionBy } =  apiResponse.data.payload.submissions[0]._by.name
-        console.log(apiResponse.data.payload.submissions[0]._by.name)
-        this.setState({ submissions: submissions, submissionBy: submissionBy })
+        let submissionBy =  apiResponse.data.payload.submissions[0]._by.name
+        this.setState({ submissions, submissionBy })
       })
   }
 
@@ -37,7 +36,7 @@ class Collection extends Component {
     // if (!submissionBy) return <h1>Loading...</h1>
     return (
       <div>
-      {/* <h1>{submissionBy}</h1> */}
+      <h1>{submissionBy}</h1>
       <SubmissionCard submissions={submissions} />
       </div>
     )

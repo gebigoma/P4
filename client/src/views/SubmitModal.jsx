@@ -12,7 +12,7 @@ class SubmitModal extends Component {
     title: "",
     body: "",
     post_url: "",
-    tags: [" "],
+    tags: [""],
     selectedFile : null
   }
 

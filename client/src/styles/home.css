@@ -9,16 +9,19 @@
 
 body {
     font-family: 'Raleway', sans-serif; 
+    background-color: rgb(239,244,244);
 }
 
 .ui.centered.cards {
     margin-top: 40px;
 }
+
 .ui.secondary.menu {
     background-color: white;
     margin-bottom: 40px;
-    padding: 0px 60px;
+    padding: 0px 60px;      
 }
+
 .login-signup-container {
     position: absolute;
     margin: auto;

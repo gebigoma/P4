@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react'
-import { NavLink } from 'react-router-dom'
-import { Menu, Visibility} from 'semantic-ui-react'
+import { Link, NavLink } from 'react-router-dom'
+import { Menu, Visibility, Image } from 'semantic-ui-react'
 
 
 const capitalize = {
@@ -26,28 +26,28 @@ class NavBar extends Component {
         onBottomPassed={this.showFixedMenu}
         onBottomPassedReverse={this.hideFixedMenu}>
         <Fragment>
-          <Menu pointing secondary fixed={fixed ? 'top' : null}>
-            <Menu.Item as={NavLink} exact to="/" name='home' />
+          <Menu size='large' pointing secondary fixed={fixed ? 'top' : null}>
+            <Menu.Item className="logo" as={Link} exact to="/" name='sugarfree gallery' />
             {currentUser
-            ? (
-              <Fragment>
-                <Menu.Item as={NavLink} to="/profile" name='currentuser' style={capitalize}>
-                  {currentUser.name}
-                </Menu.Item>
-                <Menu.Item onClick={onSubmitClick}>Submit</Menu.Item>
-                <Menu.Menu position='right'>
-                  <Menu.Item as={NavLink} name='logout' to="/logout" />
-                </Menu.Menu> 
-              </Fragment>
-            )
-            : (
-              <Fragment>
-                <Menu.Menu position='right'>
-                  <Menu.Item as={NavLink} to="/login"name='login' />
-                  <Menu.Item as={NavLink} to="/signup" name='signup' />
-                </Menu.Menu> 
-              </Fragment>
-            )
+              ? (
+                <Fragment>
+                  <Menu.Menu position='right'>
+                    <Menu.Item onClick={onSubmitClick}>Submit</Menu.Item>
+                    <Menu.Item as={NavLink} to="/profile" name='currentuser' style={capitalize}>
+                      {currentUser.name}
+                    </Menu.Item>
+                    <Menu.Item as={NavLink} name='logout' to="/logout" />
+                  </Menu.Menu>
+                </Fragment>
+              )
+              : (
+                <Fragment>
+                  <Menu.Menu position='right'>
+                    <Menu.Item as={NavLink} to="/login" name='login' />
+                    <Menu.Item as={NavLink} to="/signup" name='signup' />
+                  </Menu.Menu>
+                </Fragment>
+              )
             }
           </Menu>
         </Fragment>

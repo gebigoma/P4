@@ -6,7 +6,7 @@ const ProfileForm = (props) => {
 
   return (
     <Segment inverted>
-      <Form onSubmit={handleSubmit}>
+      <Form inverted onSubmit={handleSubmit}>
         <Form.Group widths='equal'>
           <Form.Input
             fluid label='Name'

@@ -3,11 +3,11 @@
 } */
 
 /* up to 600 is max-width */
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   body {
       background-color: lightblue;
   }
-}
+} */
 /* 
 .ui.centered.cards {
     margin-top: 40px;

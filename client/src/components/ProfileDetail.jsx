@@ -18,7 +18,7 @@ class ProfileDetail extends Component {
     const { fields, currentUser } = this.props
     return (
       <Container>
-        <Segment style={{ padding: '1em 0em' }} vertical>
+        <Segment centered style={{ padding: '1em 0em' }} vertical>
           <Grid container stackable verticalAlign='middle'>
             <Grid.Row>
               <Grid.Column floated='left' width={6}>
